@@ -2,6 +2,7 @@
 
 #include <QMainWindow>
 #include <QCloseEvent>
+#include <QFile>
 
 // Forward declarations
 class MenuBar;
@@ -130,6 +131,7 @@ private:
     MenuBar *menuBar;
     StatusBar *statusBar;
 
+    QFile *file;
     // The file path
     QString filePath;
     // The file name
