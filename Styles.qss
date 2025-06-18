@@ -1,0 +1,29 @@
+QDialog {
+    background: palette(base);
+}
+
+Editor {
+    border: 0;
+}
+
+StatusBar QLabel {
+    margin-left: 20;
+    margin-right: 20;
+}
+
+QPushButton#link {
+    color: #0080FF;
+    text-decoration: underline;
+    background: transparent;
+    border: none;
+}
+
+QPushButton#borderless {
+    border: 0;
+    margin: 0;
+}
+
+QLabel#title {
+    font-size: 24px;
+    font-weight: bold;
+}

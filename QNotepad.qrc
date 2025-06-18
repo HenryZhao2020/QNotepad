@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>QNotepad_Logo.png</file>
+    </qresource>
+    <qresource prefix="/help">
+        <file>About_zh_CN.html</file>
+        <file>About.html</file>
+    </qresource>
+    <qresource prefix="/fonts">
+        <file>CascadiaCode.ttf</file>
+    </qresource>
+    <qresource prefix="/conf">
+        <file>Styles.qss</file>
+    </qresource>
+</RCC>
