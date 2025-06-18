@@ -21,19 +21,19 @@ public:
      * @brief Provides access to the 'Editor' instance.
      * @return The 'Editor' instance.
      */
-    Editor *getEditor();
+    Editor *getEditor() const;
 
     /**
      * @brief Provides access to the 'MenuBar' instance.
      * @return The 'MenuBar' instance.
      */
-    MenuBar *getMenuBar();
+    MenuBar *getMenuBar() const;
 
     /**
      * @brief Provides access to the 'StatusBar' instance.
      * @return The 'StatusBar' instance.
      */
-    StatusBar *getStatusBar();
+    StatusBar *getStatusBar() const;
 
     /**
      * @brief Prompts the user to open file(s).
@@ -119,12 +119,13 @@ public:
      */
     static void updateEditorFont();
 
+    /**
+     * @brief Closes all windows, confirming save/discard changes.
+     */
+    static void closeAll();
+
 protected:
     void closeEvent(QCloseEvent *event) override;
-
-    // Enable drag & drop of files
-    void dragEnterEvent(QDragEnterEvent *event) override;
-    void dropEvent(QDropEvent *event) override;
 
 private:
     Editor *editor;
@@ -132,12 +133,9 @@ private:
     StatusBar *statusBar;
 
     QFile *file;
-    // The file path
-    QString filePath;
-    // The file name
-    QString fileName;
-    // Whether the file is saved
-    bool saved;
+    QString filePath;   // The file path
+    QString fileName;   // The file name
+    bool saved;         // Whether the file is saved
 
     // Store all 'MainWindow' instances
     static QList<MainWindow *> windows;
@@ -177,4 +175,12 @@ private:
      * @brief A platform-dependent method to bring this window to front.
      */
     void raiseWindow();
+
+    /**
+     * @brief Determines the position of the new window, where it would not
+     * overlap with previous windows.
+     * @param windowSize The size of the new window.
+     * @return A position to place the new window on screen.
+     */
+    static QPoint nextWindowPosition(const QSize& windowSize);
 };

@@ -56,6 +56,7 @@ MainWindow::MainWindow(const QString &path) {
 
     // Display this window
     updateTitle();
+    move(nextWindowPosition(size()));
     show();
     raiseWindow();
 
@@ -66,18 +67,18 @@ MainWindow::MainWindow(const QString &path) {
 
 MainWindow::~MainWindow() {
     file->close();
-    delete file;
+    file->deleteLater();
 }
 
-Editor *MainWindow::getEditor() {
+Editor *MainWindow::getEditor() const {
     return editor;
 }
 
-MenuBar *MainWindow::getMenuBar() {
+MenuBar *MainWindow::getMenuBar() const {
     return menuBar;
 }
 
-StatusBar *MainWindow::getStatusBar() {
+StatusBar *MainWindow::getStatusBar() const {
     return statusBar;
 }
 
@@ -244,28 +245,6 @@ void MainWindow::resetZoom() {
     setZoom(100);
 }
 
-void MainWindow::dragEnterEvent(QDragEnterEvent *event) {
-    QMainWindow::dragEnterEvent(event);
-
-    if (event->mimeData()->hasUrls()) {
-        event->acceptProposedAction();
-    }
-}
-
-void MainWindow::dropEvent(QDropEvent *event) {
-    QMainWindow::dropEvent(event);
-
-    const auto &mimeData = event->mimeData();
-    if (!mimeData->hasUrls()) {
-        return;
-    }
-
-    const auto urls = mimeData->urls();
-    for (const auto &url : urls) {
-        MainWindow::open(url.toLocalFile());
-    }
-}
-
 void MainWindow::closeEvent(QCloseEvent *event) {
     QMainWindow::closeEvent(event);
 
@@ -345,6 +324,12 @@ void MainWindow::updateEditorFont() {
     }
 }
 
+void MainWindow::closeAll() {
+    for (auto win : std::as_const(windows)) {
+        win->close();
+    }
+}
+
 void MainWindow::raiseWindow() {
 #ifdef Q_OS_WINDOWS
     HWND hwnd = (HWND) winId();
@@ -360,4 +345,21 @@ void MainWindow::raiseWindow() {
     raise();
     activateWindow();
 #endif
+}
+
+QPoint MainWindow::nextWindowPosition(const QSize &windowSize) {
+    static QPoint base = QPoint(100, 100);
+    static QPoint offset = QPoint(30, 30);
+    static QRect screen = QGuiApplication::primaryScreen()->availableGeometry();
+
+    QPoint nextPos = base;
+    base += offset;
+
+    // Reset if it would go off screen
+    if (base.x() + windowSize.width() > screen.right() ||
+        base.y() + windowSize.height() > screen.bottom()) {
+        base = QPoint(100, 100); // reset to origin
+    }
+
+    return nextPos;
 }
