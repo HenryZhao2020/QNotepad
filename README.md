@@ -47,6 +47,6 @@ Customize Editor Font:
 ![](Screenshots/Font_Chooser.png)
 
 
-About QNotepad:
+Works on Mac Too!
 
-![](Screenshots/About.png)
+![](Screenshots/Mac.png)
