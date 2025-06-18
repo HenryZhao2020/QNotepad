@@ -80,10 +80,12 @@ void MenuBar::makeFileMenu() {
 
     fileMenu->addSeparator();
 
-    // Close the window
+    // Close the window (on Windows only; macOS has a built-in 'Quit' action)
+#ifdef Q_OS_WINDOWS
     fileMenu->addAction(tr("E&xit"), [this] {
         win->close();
     });
+#endif
 }
 
 void MenuBar::makeEditMenu() {

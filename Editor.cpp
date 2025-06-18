@@ -181,18 +181,17 @@ void Editor::resizeEvent(QResizeEvent *event) {
 }
 
 void Editor::dragEnterEvent(QDragEnterEvent *event) {
-    QPlainTextEdit::dragEnterEvent(event);
-
     if (event->mimeData()->hasUrls()) {
-        event->acceptProposedAction();
+        event->acceptProposedAction();          // Accept file drop
+    } else {
+        QPlainTextEdit::dragEnterEvent(event);  // Accept normal text
     }
 }
 
 void Editor::dropEvent(QDropEvent *event) {
-    QPlainTextEdit::dropEvent(event);
-
     const auto &mimeData = event->mimeData();
     if (!mimeData->hasUrls()) {
+        QPlainTextEdit::dropEvent(event);
         return;
     }
 
