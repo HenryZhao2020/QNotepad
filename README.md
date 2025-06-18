@@ -37,16 +37,16 @@ Find/Replace Text:
 ![](Screenshots/Find_Replace.png)
 
 
-Lock File in Use:
+Lock Files in Use:
 
 ![](Screenshots/File_Lock.png)
 
 
-Customize Font:
+Customize Editor Font:
 
 ![](Screenshots/Font_Chooser.png)
 
 
-About Dialog:
+About QNotepad:
 
 ![](Screenshots/About.png)
