@@ -4,6 +4,8 @@
 
 #include <QDir>
 #include <QFont>
+#include <QtGui/qscreen.h>
+#include <QtWidgets/qapplication.h>
 
 /**
  * @brief Contains shared attributes for saving and loading program state.
@@ -31,7 +33,12 @@ public:
     /// Zoom percentage of the editor font size.
     int zoom{100};
     /// Editor font.
+#if defined(Q_OS_MAC)
+    // macOS bump due to Retina display
+    QFont editorFont{{"Cascadia Code", "Microsoft Yahei UI"}, 15};
+#else
     QFont editorFont{{"Cascadia Code", "Microsoft Yahei UI"}, 12};
+#endif
     /// Display language.
     Lang lang{Lang::ENGLISH};
 
