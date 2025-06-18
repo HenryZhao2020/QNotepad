@@ -12,6 +12,10 @@
 #include <QMessageBox>
 #include <QShortcut>
 
+#ifdef Q_OS_WINDOWS
+#include <windows.h>
+#endif
+
 QList<MainWindow *> MainWindow::windows;
 const QString MainWindow::EXT_FILTER =
     QFileDialog::tr("Text Documents (*.txt)") + "\n" +
@@ -19,6 +23,9 @@ const QString MainWindow::EXT_FILTER =
 
 MainWindow::MainWindow(const QString &path) {
     // Get the full file path
+    file = new QFile{path};
+    file->open(QFile::ReadWrite | QFile::Text);
+
     filePath = QFileInfo{path}.absoluteFilePath();
     // The default file name is 'Untitled' if no file is opened
     fileName = filePath.isEmpty() ? tr("Untitled") : QFileInfo{filePath}.fileName();
@@ -58,7 +65,8 @@ MainWindow::MainWindow(const QString &path) {
 }
 
 MainWindow::~MainWindow() {
-
+    file->close();
+    delete file;
 }
 
 Editor *MainWindow::getEditor() {
