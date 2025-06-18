@@ -1,12 +1,13 @@
-# PlainEdit
+# QNotepad
 
-A feature-rich alternative to Windows Notepad!
+✨ A Clean, Powerful Alternative to Windows Notepad
 
-- Dark Mode
-- View Recent Files
-- Advanced Find & Replace
-- Support for Opening Multiple Files
-- Display Line Numbers
+✅ Dark Mode – Comfortable editing, day or night
+📁 Recent Files – Quickly reopen your latest documents
+🔍 Smarter Find & Replace – Precise text editing at your fingertips
+🔒 File Locking – Prevent accidental edits from other apps
+🪟 Single Window per File – No duplicate windows cluttering your workspace
+🔢 Line Numbers – Stay oriented while reading or coding
 
 
 # Preview
