@@ -19,7 +19,6 @@ public:
      * @param win The parent 'MainWindow' instance.
      */
     MenuBar(MainWindow *win);
-    ~MenuBar();
 
     /**
      * @brief Adds a recent file path to the menu.

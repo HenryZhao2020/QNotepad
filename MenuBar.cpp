@@ -18,8 +18,6 @@ MenuBar::MenuBar(MainWindow *win)
     makeHelpMenu();
 }
 
-MenuBar::~MenuBar() {}
-
 void MenuBar::addRecent(const QString &path) {
     auto action = new QAction{path, this};
     // Open the file at the corresponding path

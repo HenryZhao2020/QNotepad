@@ -28,7 +28,6 @@ protected:
      * @param win The parent 'MainWindow' instance.
      */
     Dialog(MainWindow *win);
-    ~Dialog();
 
     MainWindow *win;
     Editor *editor;
@@ -82,7 +81,6 @@ public:
      * @param win The parent 'MainWindow' instance.
      */
     ReplaceDialog(MainWindow *win);
-    ~ReplaceDialog();
 
 private:
     // Prompt the user to enter the text snippet to replace
@@ -105,7 +103,6 @@ public:
      * @param win The parent 'MainWindow' instance.
      */
     GoToDialog(MainWindow *win);
-    ~GoToDialog();
 
 protected:
     void keyPressEvent(QKeyEvent *event) override;
@@ -134,7 +131,6 @@ public:
      * @param win The parent 'MainWindow' instance.
      */
     AboutDialog(MainWindow *win);
-    ~AboutDialog();
 
 private:
     QFrame *createInfoFrame();

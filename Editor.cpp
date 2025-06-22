@@ -26,8 +26,6 @@ Editor::Editor(MainWindow *win) : QPlainTextEdit{win}, win{win} {
     setZoom(Attr::get().zoom);
 }
 
-Editor::~Editor() {}
-
 LineBar *Editor::getLineBar() {
     return lineBar;
 }
@@ -252,8 +250,6 @@ Highlighter::Highlighter(Editor *editor)
     updateTarget();
 }
 
-Highlighter::~Highlighter() {}
-
 void Highlighter::updateTarget() {
     // Temporarily stop detecting changes in the editor
     editor->blockSignals(true);
@@ -280,8 +276,6 @@ void Highlighter::highlightBlock(const QString &text) {
 }
 
 LineBar::LineBar(Editor *editor) : QFrame{editor}, editor{editor} {}
-
-LineBar::~LineBar() {}
 
 void LineBar::paintEvent(QPaintEvent *event) {
     QFrame::paintEvent(event);

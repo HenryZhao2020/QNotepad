@@ -19,10 +19,6 @@ StatusBar::StatusBar(MainWindow *win) : QStatusBar(win), win(win) {
     addPermanentWidget(zoomLabel);
 }
 
-StatusBar::~StatusBar() {
-
-}
-
 void StatusBar::updateCursorPos() {
     const QTextCursor &cursor = win->getEditor()->textCursor();
     // Current line

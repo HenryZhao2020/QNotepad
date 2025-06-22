@@ -18,7 +18,6 @@ public:
      * @param win The parent 'MainWindow' instance.
      */
     StatusBar(MainWindow *win);
-    ~StatusBar();
 
     /**
      * @brief Updates the cursor position.

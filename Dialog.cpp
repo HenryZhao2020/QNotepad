@@ -28,8 +28,6 @@ Dialog::Dialog(MainWindow *win)
     connect(closeShortcut, &QShortcut::activated, this, &Dialog::close);
 }
 
-Dialog::~Dialog() {}
-
 void Dialog::show() {
     // Make this window not resizable
     setFixedSize(sizeHint());
@@ -138,8 +136,6 @@ ReplaceDialog::ReplaceDialog(MainWindow *win) : FindDialog{win} {
     mainLayout->addWidget(replaceAllButton, 1, 2);
 }
 
-ReplaceDialog::~ReplaceDialog() {}
-
 GoToDialog::GoToDialog(MainWindow *win) : Dialog(win) {
     setWindowTitle(tr("Go To"));
     // Disable all background windows
@@ -163,8 +159,6 @@ GoToDialog::GoToDialog(MainWindow *win) : Dialog(win) {
     connect(goButton, &QPushButton::clicked, this, &GoToDialog::go);
     mainLayout->addWidget(goButton, 1, 1);
 }
-
-GoToDialog::~GoToDialog() {}
 
 void GoToDialog::keyPressEvent(QKeyEvent *event) {
     Dialog::keyPressEvent(event);
@@ -199,8 +193,6 @@ AboutDialog::AboutDialog(MainWindow *win) : Dialog{win} {
     connect(okButton, &QPushButton::clicked, this, &Dialog::close);
     mainLayout->addWidget(okButton, 1, 0, Qt::AlignCenter);
 }
-
-AboutDialog::~AboutDialog() {}
 
 QFrame *AboutDialog::createInfoFrame() {
     auto infoFrame = new QFrame{this};

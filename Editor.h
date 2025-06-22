@@ -20,7 +20,6 @@ public:
      * @param win The parent 'MainWindow' instance.
      */
     Editor(MainWindow *win);
-    ~Editor();
 
     /**
      * @brief Provides access to the 'LineBar' instance.
@@ -139,7 +138,6 @@ public:
      * @param editor The parent 'Editor' instance.
      */
     Highlighter(Editor *editor);
-    ~Highlighter();
 
     /**
      * @brief Updates the text snippet to search and highlight.
@@ -170,7 +168,6 @@ public:
      * @param editor The parent 'Editor' instance.
      */
     LineBar(Editor *editor);
-    ~LineBar();
 
 protected:
     void paintEvent(QPaintEvent *event) override;
